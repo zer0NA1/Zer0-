@@ -468,33 +468,39 @@ const db = getDatabase(app);
 
 const heartBtn = document.getElementById("heartBtn");
 const likeText = document.getElementById("likeCount");
-const heartPath = heartBtn.querySelector("svg path");
-
 const likedKey = "liked_global";
 let liked = localStorage.getItem(likedKey) === "true";
 
 const likesRef = ref(db, "likes");
 
-get(likesRef).then(snapshot => {
-  const val = snapshot.val() || 0;
-  likeText.textContent = `${val} LIKES`;
-  if (liked) {
-    heartPath.style.fill = "#FF0068";
-    heartPath.style.stroke = "none";
+lucide.createIcons();
+
+setTimeout(() => {
+  const heartSVG = heartBtn.querySelector("svg");
+  if (liked && heartSVG) {
+    heartSVG.setAttribute("fill", "#FF0068");
+    heartSVG.setAttribute("stroke", "none");
   }
-});
 
-onValue(likesRef, snapshot => {
-  likeText.textContent = `${snapshot.val() || 0} LIKES`;
-});
+  get(likesRef).then(snapshot => {
+    const val = snapshot.val() || 0;
+    likeText.textContent = `${val} LIKES`;
+  });
 
-heartBtn.onclick = () => {
-  if (liked) return;
-  runTransaction(likesRef, current => (current || 0) + 1);
-  liked = true;
-  localStorage.setItem(likedKey, "true");
-  heartPath.style.fill = "#FF0068";
-  heartPath.style.stroke = "none";
-};
+  onValue(likesRef, snapshot => {
+    likeText.textContent = `${snapshot.val() || 0} LIKES`;
+  });
+
+  heartBtn.onclick = () => {
+    if (liked) return;
+    runTransaction(likesRef, current => (current || 0) + 1);
+    liked = true;
+    localStorage.setItem(likedKey, "true");
+    if (heartSVG) {
+      heartSVG.setAttribute("fill", "#FF0068");
+      heartSVG.setAttribute("stroke", "none");
+    }
+  };
+}, 50);
 </script>
 </html>  
