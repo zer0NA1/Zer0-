@@ -1,3 +1,5 @@
+Hey how can I fix the heart logic is not working as you can see its hearted but not added and when in desktop Preview the positioning is mess up 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,12 +36,10 @@
       z-index: 1;
     }
     #b {
-      position: relative;
       border: 1px solid rgba(255, 255, 255, 0.3);
       border-radius: 12px;
-      height: 280px;
-      width: 380px;
-      max-width: 90vw;
+      height: clamp(200px, 5vh, 400px);
+      width: clamp(300px, 5vh, 400px);
       display: flex;
       flex-direction: column;
       color: white;
@@ -75,7 +75,9 @@
       background: linear-gradient(to bottom, #fff, #888);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin: 0;
+      margin-top: -5px;
+      margin-left: 20px;
+      margin-right: 20px;
       transition: all 0.3s ease;
     }
     .t h2:hover {
@@ -83,63 +85,18 @@
       filter: brightness(1.2);
     }
     .t h4 {
-      position: absolute;
-      font-size: 14px;
+      font-size: 14;
       font-weight: 500;
       color: gray;
-      top: 65px;
-      left: 110px;
-      margin: 0;
+      margin-top: 45px;
+      margin-left: -80px;
       filter: brightness(1.2);
-    }
-    .hb {
-      position: absolute;
-      top: 24px;
-      right: 24px;
-      width: 25px;
-      height: 25px;
-      border: 0.3px solid gray;
-      border-radius: 6px;
-      transition: all 0.2s ease;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .hb svg {
-      width: 18px;
-      height: 18px;
-      transition: all 0.3s ease;
-    }
-    .hb:hover {
-      transform: scale(0.9);
-    }
-    .hb:active {
-      filter: brightness(1.3);
-    }
-    .hb:hover svg {
-      transform: scale(1.1);
-      filter: drop-shadow(0 0 4px #FF0068);
-    }
-    .cb {
-      position: absolute;
-      bottom: 24px;
-      left: 24px;
-      border-radius: 4px;
-    }
-    .cb h3 {
-      font-size: 12px;
-      margin: 0;
-      font-family: monospace;
-      font-weight: 900;
-      color: gray;
     }
     .anim {
       color: white;
       text-align: center;
       font-family: monospace;
-      margin-top: 55px;
+      margin-top: 30px;
       font-weight: 600;
       filter: brightness(1);
       transition: all 0.3s ease;
@@ -150,22 +107,20 @@
     }
     .mc {
       position: absolute;
-      bottom: 24px;
-      right: 24px;
       border: 0.3px solid gray;
       border-radius: 6px;
+      margin-left: 285px;
+      margin-top: 185px;
       height: 30px;
       width: 30px;
       transition: all 0.2s ease;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
     .mc svg {
       stroke: white;
       width: 20px;
       height: 20px;
+      margin-left: 5px;
+      margin-top: 5px;
     }
     .mc:hover {
       transform: scale(0.9);
@@ -177,8 +132,9 @@
       display: flex;
       gap: 5px;
       position: absolute;
-      top: 40px;
-      right: 60px;
+      bottom: 185px;
+      left: 70%;
+      transform: translateX(-50%);
     }
     .f {
       width: 24px;
@@ -201,9 +157,14 @@
       transform: translateY(-3px);
       filter: brightness(1.1);
     }
+    .f img:hover {
+      transform: scale(1.1);
+      filter: brightness(1.1);
+    }
     .b2 {
-      width: fit-content;
-      padding: 10px 25px;
+      width: clamp(93px, 2vw, 193px);
+      height: 8px;
+      padding: 20px;
       border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 50px;
       gap: 20px;
@@ -212,22 +173,31 @@
       backdrop-filter: blur(10px);
     }
     .fsvg {
+      border: 0.3px solid gray;
+      border-radius: 20px;
+      margin-top: -15.5px;
+      margin-left: -15px;
+      width: 40px;
+      height: 38px;
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
       transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
     .fsvg svg {
       fill: gray;
-      width: 28px;
-      height: 28px;
+      width: 35px;
+      height: 32px;
+      margin-left: 1.5px;
+      margin-top: 4px;
       transition: all 0.3s ease;
+      object-fit: cover;
     }
-    .fsvg:hover svg {
+    .fsvg:hover {
+      transform: scale(0.9);
+    }
+    .fsvg svg:hover {
       fill: white;
-      transform: scale(1.1);
+      transform: scale(0.9);
     }
   </style>
 </head>
@@ -237,10 +207,8 @@
     <div id="b">
       <div class="t">
         <img src="https://raw.githubusercontent.com/zer0NA1/zer0/refs/heads/main/349-removebg-preview.png" id="p">
-        <div>
-          <h2>Zer0</h2>
-          <h4>#sillyvet</h4>
-        </div>
+        <h2>Zer0</h2>
+        <h4>#sillyvet</h4>
         <div class="badges">
           <div class="f" id="1">
             <img src="https://raw.githubusercontent.com/zer0NA1/zer0/refs/heads/main/359-Photoroom.png" alt="Badge 1">
@@ -256,11 +224,6 @@
           </div>
         </div>
       </div>
-      <div class="hb" id="heartBtn">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-        </svg>
-      </div>
       <h3 class="anim"></h3>
       <div class="mc" id="musicBtn">
         <svg id="volOff" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -273,9 +236,6 @@
           <path d="M19 5a7 7 0 0 1 0 14"></path>
           <path d="M15 9a3 3 0 0 1 0 6"></path>
         </svg>
-      </div>
-      <div class="cb" id="cc">
-        <h3 id="likeCount">0 LIKES</h3>
       </div>
     </div>
     <div class="b2">
@@ -290,7 +250,7 @@
         </svg>
       </div>
       <div class="fsvg" id="rl">
-        <svg viewBox="0 0 25 28" xmlns="http://www.w3.org/2000/svg" style="width:24px; height:24px;">
+        <svg viewBox="0 0 25 28" xmlns="http://www.w3.org/2000/svg">
           <path d="M4.913 0 0 19.088 19.088 24 24 4.912 4.913 0Zm8.47 14.341-3.726-.958.959-3.726 3.726.959-.96 3.726Z"/>
         </svg>
       </div>
@@ -310,11 +270,15 @@
       cv.style.width = window.innerWidth + "px";
       cv.style.height = window.innerHeight + "px";
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
       if (window.innerWidth > 768) {
-        cnt = 300; dst = 200;
+        cnt = 300;
+        dst = 200;
       } else {
-        cnt = 150; dst = 100;
+        cnt = 150;
+        dst = 100;
       }
+
       n = Array.from({length: cnt}, () => ({
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight,
@@ -323,107 +287,117 @@
         r: Math.random() * 1 + 0.5
       }));
     };
+
     window.addEventListener("resize", rs);
     rs();
 
     const anim = () => {
       ctx.clearRect(0, 0, cv.width, cv.height);
+
       n.forEach((a, i) => {
-        a.x += a.vx; a.y += a.vy;
+        a.x += a.vx;
+        a.y += a.vy;
+
         if (a.x < 0 || a.x > window.innerWidth) a.vx *= -1;
         if (a.y < 0 || a.y > window.innerHeight) a.vy *= -1;
+
         ctx.beginPath();
         ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2);
         ctx.fillStyle = "rgba(255,255,255,0.3)";
         ctx.fill();
+
         for (let j = i + 1; j < n.length; j++) {
           const b = n[j];
           const d = Math.hypot(a.x - b.x, a.y - b.y);
           if (d < dst) {
             ctx.strokeStyle = `rgba(255,255,255,${(1 - d / dst) * 0.2})`;
             ctx.beginPath();
-            ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
             ctx.stroke();
           }
         }
       });
+
       requestAnimationFrame(anim);
     };
+
     anim();
 
-    const ph = ['Filipino Developer 🇵🇭','Professional Luau Developer','Html Developer','Coding is my Hobby','Learning JavaScript','16 year old Coder',"Professional Rizzler","To God Be The Glory"];
+    const ph = [
+      'Filipino Developer 🇵🇭',
+      'Professional Luau Developer',
+      'Html Developer',
+      'Coding is my Hobby',
+      'Learning JavaScript',
+      '16 year old Coder',
+      "Professional Rizzler",
+      "To God Be The Glory"
+    ];
+
     let idx = 0, chr = 0, del = false;
     const txt = document.querySelector('.anim');
+
     const type = () => {
       const cur = ph[idx];
       if (!del) {
-        txt.textContent = cur.slice(0, chr + 1); chr++;
-        if (chr === cur.length) setTimeout(() => del = true, 500);
+        txt.textContent = cur.slice(0, chr + 1);
+        chr++;
+        if (chr === cur.length) {
+          setTimeout(() => del = true, 500);
+        }
       } else {
-        txt.textContent = cur.slice(0, chr - 1); chr--;
-        if (chr === 0) { del = false; idx = (idx + 1) % ph.length; }
+        txt.textContent = cur.slice(0, chr - 1);
+        chr--;
+        if (chr === 0) {
+          del = false;
+          idx = (idx + 1) % ph.length;
+        }
       }
       setTimeout(type, del ? 40 : 50);
     };
+
     type();
 
     const mb = document.getElementById("musicBtn");
     const von = document.getElementById("volOn");
     const voff = document.getElementById("volOff");
+
     const aud = new Audio("https://raw.githubusercontent.com/zer0NA1/zer0/main/screen-20260114-084919.mp3");
-    aud.loop = true; aud.volume = 0.9;
-    let play = false, fp = true;
+    aud.loop = true;
+    aud.volume = 0.9;
+
+    let play = false;
+    let fp = true;
+
     mb.onclick = () => {
       play = !play;
+
       if (play) {
-        if (fp) { aud.currentTime = 5; fp = false; }
-        aud.play(); von.style.display = "block"; voff.style.display = "none";
+        if (fp) {
+          aud.currentTime = 5;
+          fp = false;
+        }
+        aud.play();
+        von.style.display = "block";
+        voff.style.display = "none";
       } else {
-        aud.pause(); von.style.display = "none"; voff.style.display = "block";
+        aud.pause();
+        von.style.display = "none";
+        voff.style.display = "block";
       }
     };
-    document.getElementById("dl").onclick = () => window.open("https://discord.gg/UhBQhq5trM", "_blank");
-    document.getElementById("gl").onclick = () => window.open("https://github.com/zer0NA1", "_blank");
-    document.getElementById("rl").onclick = () => window.open("https://www.roblox.com/users/1356650235/profile", "_blank");
-  </script>
 
-  <script type="module">
-    import { initializeApp as init } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
-    import { getDatabase as gdb, ref, runTransaction as rt, onValue as ov, get } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-database.js";
-
-    const cfg = {
-      apiKey: "AIzaSyCXNgCJcKQxNAKDZd6opKGKtOv1UbEQOJQ",
-      authDomain: "zer0-9cb76.firebaseapp.com",
-      databaseURL: "https://zer0-9cb76-default-rtdb.firebaseio.com",
-      projectId: "zer0-9cb76",
-      storageBucket: "zer0-9cb76.firebasestorage.app",
-      messagingSenderId: "957039012079",
-      appId: "1:957039012079:web:b7e5a002b4c8c707ae531a"
+    document.getElementById("dl").onclick = () => {
+      window.open("https://discord.gg/UhBQhq5trM", "_blank");
     };
 
-    const app = init(cfg);
-    const db = gdb(app);
-    const hb = document.getElementById("heartBtn");
-    const hs = hb.querySelector("svg");
-    const lt = document.getElementById("likeCount");
-    const lk = "liked_global";
-    let lkd = localStorage.getItem(lk) === "true";
-    const lr = ref(db, "likes");
+    document.getElementById("gl").onclick = () => {
+      window.open("https://github.com/zer0NA1", "_blank");
+    };
 
-    const upUI = (v) => { lt.textContent = `${v || 0} LIKES`; };
-    if (lkd) { hs.setAttribute("fill", "#FF0068"); hs.setAttribute("stroke", "#FF0068"); }
-
-    get(lr).then(s => upUI(s.val()));
-    ov(lr, s => upUI(s.val()));
-
-    hb.onclick = () => {
-      if (lkd) return;
-      rt(lr, c => (c || 0) + 1).then(() => {
-        lkd = true;
-        localStorage.setItem(lk, "true");
-        hs.setAttribute("fill", "#FF0068");
-        hs.setAttribute("stroke", "#FF0068");
-      });
+    document.getElementById("rl").onclick = () => {
+      window.open("https://www.roblox.com/users/1356650235/profile", "_blank");
     };
   </script>
 </body>
