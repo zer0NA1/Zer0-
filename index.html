@@ -451,7 +451,7 @@ document.getElementById("rl").onclick = () => {
 </body>
   <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
-import { getDatabase, ref, runTransaction, onValue } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-database.js";
+import { getDatabase, ref, runTransaction, onValue, get } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCXNgCJcKQxNAKDZd6opKGKtOv1UbEQOJQ",
@@ -475,14 +475,18 @@ let liked = localStorage.getItem(likedKey) === "true";
 
 const likesRef = ref(db, "likes");
 
+get(likesRef).then(snapshot => {
+  const val = snapshot.val() || 0;
+  likeText.textContent = `${val} LIKES`;
+  if (liked) {
+    heartPath.style.fill = "#FF0068";
+    heartPath.style.stroke = "none";
+  }
+});
+
 onValue(likesRef, snapshot => {
   likeText.textContent = `${snapshot.val() || 0} LIKES`;
 });
-
-if (liked) {
-  heartPath.style.fill = "#FF0068";
-  heartPath.style.stroke = "none";
-}
 
 heartBtn.onclick = () => {
   if (liked) return;
@@ -492,5 +496,5 @@ heartBtn.onclick = () => {
   heartPath.style.fill = "#FF0068";
   heartPath.style.stroke = "none";
 };
-  </script>
+</script>
 </html>  
